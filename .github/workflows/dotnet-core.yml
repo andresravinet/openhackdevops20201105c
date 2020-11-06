@@ -58,7 +58,8 @@ jobs:
     needs: [build_and_test]
     steps:
       - uses: action/checkout@v2
-        name: Docker login
+      
+      - name: Docker login
         run: docker login $registry -u ${{ secrets.ACR_USER }} -p ${{ secrets.ACR_KEY }}
         
       - name: Docker build
