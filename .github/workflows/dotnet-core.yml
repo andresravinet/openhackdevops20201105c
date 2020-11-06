@@ -56,13 +56,8 @@ jobs:
   docker_build_and_push:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-      
-    - name: Docker login    
-      run: docker login $registry -u ${{ secrets.ACR_USER }} -p ${{ secrets.ACR_KEY }}
-    
-    - name: Docker build
-      run: docker build -t $registry/$repository:${{github.run_number}} --build-arg build_version=${{github.run_number}} $docker_path
-    
-    - name: Docker Push
-      run: docker push $registry/$repository:${{github.run_number}}
+      - uses: actions/checkout@v2
+      
+      - name: Docker login
+        run: docker login $registry -u ${{ secrets.ACR_USER }} -p ${{ secrets.ACR_KEY }}
+        
